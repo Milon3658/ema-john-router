@@ -11,7 +11,7 @@ const Login = () => {
         const password = form.password.value;
         // console.log(email, password);
         signIn(email, password)
-            .then(result => { console.log(result.user) })
+            .then(result => { })
             .catch(e => console.log(e));
         form.reset();
     }
