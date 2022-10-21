@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/UserContext';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const {user,signIn } = useContext(AuthContext)
     const handleSignIn = (event) => {
         const form = event.target;
         event.preventDefault();
