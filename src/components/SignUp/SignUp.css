@@ -53,3 +53,6 @@
 .btn-submit:hover{
     background-color: rgba(255, 153, 0, 0.6);
 }
+.error-text{
+    color: rgb(174, 78, 78);
+}
