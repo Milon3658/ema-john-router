@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/UserContext';
 
 const Login = () => {
+    const Navigate = useNavigate();
     const {user,signIn } = useContext(AuthContext)
     const handleSignIn = (event) => {
         const form = event.target;
@@ -14,6 +15,7 @@ const Login = () => {
             .then(result => { })
             .catch(e => console.log(e));
         form.reset();
+        Navigate('/');
     }
     return (
         <div className='form-container'>

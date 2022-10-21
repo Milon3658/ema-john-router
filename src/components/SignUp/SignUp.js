@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/UserContext';
 import './SignUp.css'
 
 const SignUp = () => {
     const { user, createUser } = useContext(AuthContext)
     const [error, setError] = useState(null);
-
+    const Navigate = useNavigate();
     const handleSignUp = (event) => {
         const form = event.target;
         event.preventDefault();
@@ -28,6 +28,7 @@ const SignUp = () => {
             })
             .catch(e => { console.log(e) })
         form.reset();
+        Navigate('/');
     }
     return (
         <div className='form-container'>
