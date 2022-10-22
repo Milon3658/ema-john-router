@@ -8,12 +8,13 @@ import Inventory from './components/Inventory/Inventory';
 import { productsAndCartLoader } from './loaders/productsAndCartLoader';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
-
+import Shipping from './components/Shipping/Shipping';
+import PrivateRoute from './components/route/PrivateRoute';
 
 function App() {
   const router = createBrowserRouter([
     {
-      path:'/',
+      path: '/',
       element: <Main></Main>,
       children: [
         {
@@ -22,29 +23,32 @@ function App() {
           element: <Shop></Shop>
         },
         {
-          path:'orders',
+          path: 'orders',
           loader: productsAndCartLoader,
           element: <Orders></Orders>
         },
         {
           path: 'inventory',
-          element: <Inventory></Inventory>
+          element: <PrivateRoute><Inventory></Inventory></PrivateRoute>
         },
         {
-          path:'about',
-          element:<About></About>
+          path: 'about',
+          element: <About></About>
         },
         {
-          path:'/login',
-          element:<Login></Login>
+          path: '/login',
+          element: <Login></Login>
         },
         {
-          path:'/signUp',
-          element:<SignUp></SignUp>
+          path: '/signUp',
+          element: <SignUp></SignUp>
         },
+        {
+          path: '/shipping',
+          element: <PrivateRoute><Shipping></Shipping></PrivateRoute>
+        }
       ]
     },
-    
   ])
   return (
     <div>
