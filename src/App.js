@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import Shipping from './components/Shipping/Shipping';
 import PrivateRoute from './components/route/PrivateRoute';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 function App() {
   const router = createBrowserRouter([
@@ -23,16 +24,23 @@ function App() {
           element: <Shop></Shop>
         },
         {
-          path: 'orders',
+          path: '/products/:id',
+          loader: async ({ params }) =>{
+            return await fetch(`http://localhost:5000/products/${params.id}`)
+          },
+          element: <ProductDetails></ProductDetails>
+        },
+        {
+          path: '/orders',
           loader: productsAndCartLoader,
           element: <Orders></Orders>
         },
         {
-          path: 'inventory',
+          path: '/inventory',
           element: <PrivateRoute><Inventory></Inventory></PrivateRoute>
         },
         {
-          path: 'about',
+          path: '/about',
           element: <About></About>
         },
         {

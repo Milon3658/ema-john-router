@@ -58,11 +58,14 @@ const Shop = () => {
       <div className="shop-container">
         <div className="products-container">
           {products.map((product) => (
-            <Product
-              key={product._id}
-              product={product}
-              handleAddToCart={handleAddToCart}
-            ></Product>
+            <Link className="Link" to={`/products/${product._id}`}>
+              <Product
+                className="product"
+                key={product._id}
+                product={product}
+                handleAddToCart={handleAddToCart}
+              ></Product>
+            </Link>
           ))}
         </div>
         <div className="cart-container">
@@ -76,18 +79,19 @@ const Shop = () => {
 
       {/* Pagination */}
       <div className="pagination">
-      <p>Now your are page no {page + 1}</p>
+        <p>Now your are page no {page + 1}</p>
         {[...Array(pages).keys()].map((number) => {
           return (
-            <button 
-            className={page === number && "selected"}
-            key={number} onClick={() => setPage(number)}>
+            <button
+              className={page === number && "selected"}
+              key={number}
+              onClick={() => setPage(number)}
+            >
               {number + 1}
             </button>
           );
         })}
       </div>
-      
     </div>
   );
 };
